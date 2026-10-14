@@ -4,17 +4,16 @@ using System;
 using ManApp.Models;
 namespace WpfApp4
 {
-    // Interaction logic for MainWindow.xaml
     public partial class MainWindow : Window
     {
         private Man _man = new Man();
-        public MainWindow()
+        public MainWindow()/ //Конструктор еу
         {
             InitializeComponent();
         }
         // Считать данные из полей ввода и вернуть человека,
         // либо null при ошибке (с показом сообщения).
-        private Man ReadFromForm()
+        private Man ReadFromForm() //Метод еу
         {
             try
             {
@@ -35,13 +34,13 @@ namespace WpfApp4
         // Демонстрация перегрузки SetParams(string, int, string, double).
         private void BtnFullSet_Click(object sender, RoutedEventArgs e)
         {
-            Man m = ReadFromForm();
-            if (m == null) return;
-            _man.SetParams(m.Name, m.Age, m.Gender, m.Weight);
+            Man m = ReadFromForm();//считывает данные из полей и проверяет их на корректность 
+            if (m == null) return; //если значения некорректны, то прирываем метод.
+            _man.SetParams(m.Name, m.Age, m.Gender, m.Weight); //
             lblResult.Text = "SetParams(имя, возраст, пол, вес):\n" + _man;
         }
         // Демонстрация перегрузки SetParams(string, int).
-        private void BtnNameAge_Click(object sender, RoutedEventArgs e)
+        private void BtnNameAge_Click(object sender, RoutedEventArgs e)//кнопка имя,возраст
         {
             Man m = ReadFromForm();
             if (m == null) return;
@@ -49,7 +48,7 @@ namespace WpfApp4
             lblResult.Text = "SetParams(имя, возраст):\n" + _man;
         }
         // Демонстрация перегрузки SetParams(int, double).
-        private void BtnAgeWeight_Click(object sender, RoutedEventArgs e)
+        private void BtnAgeWeight_Click(object sender, RoutedEventArgs e)//кнопка возраст,вес
         {
             Man m = ReadFromForm();
             if (m == null) return;
@@ -57,16 +56,14 @@ namespace WpfApp4
             _man.SetParams(m.Age, m.Weight);
             lblResult.Text = "SetParams(возраст, вес):\n" + _man;
         }
-        // Кнопка "О программе".
-        private void BtnAbout_Click(object sender, RoutedEventArgs e)
+        private void BtnAbout_Click(object sender, RoutedEventArgs e) //кнопка о программе
         {
             MessageBox.Show(
                 "Практическая работа 4. Задание Создать класс Man (человек), с полями: имя, возраст, пол и вес. Создать \r\n" +
                 "необходимые методы и свойства. Создать перегруженные методы SetParams, для \r\n" +
                 "установки параметров человека. Разработчик: Мухутдинова Алина Маратовна ИСП-31");
-        }
-        // Кнопка "Выход".
-        private void BtnExit_Click(object sender, RoutedEventArgs e)
+        }й
+        private void BtnExit_Click(object sender, RoutedEventArgs e)// Кнопка "Выход".
         {
             this.Close();
         }
